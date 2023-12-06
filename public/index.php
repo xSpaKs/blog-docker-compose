@@ -4,6 +4,8 @@ require __DIR__ . "/../vendor/autoload.php";
 
 session_start();
 
+print_r(PDO::getAvailableDrivers());
+
 
 /*use Dotenv\Dotenv;
 
@@ -47,7 +49,6 @@ switch($url)
     default : 
         include '../src/controllers/articlesController.php';
         break;
-
     }
 
 

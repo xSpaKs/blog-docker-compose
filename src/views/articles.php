@@ -9,26 +9,20 @@
     <?=isset($_SESSION["message"]) ? $_SESSION["message"] : ""; $_SESSION["message"] = ""?>
 
     <?php 
-    if (len($articles) == 0) { ?>
+    if (count($articles) == 0) { ?>
         <p>There is no article yet</p>
     <?php }
-        for ($i = 0; $i < len($articles); $i++)
+        for ($i = 0; $i < count($articles); $i++)
         { ?>
             <div>
-                <?php
-                if (len($articles) == 1)
-                { ?>
-                    <p>Date : <?=Carbon::parse($parsedown->text($articles[$i]["updated_at"]))->diffForHumans()?></p>
-                <?php }
-                else
-                { ?>
-                    <p>Date : <?=Carbon::parse($parsedown->text($articles[$i]["updated_at"]))->isoFormat('LLLL')?></p>
-                <?php }
-                ?>
+                <p>Date: <?= count($articles) === 1 ?
+                    Carbon::parse($parsedown->text($article["updated_at"]))->diffForHumans() :
+                    Carbon::parse($parsedown->text($article["updated_at"]))->isoFormat('LLLL') ?>
+                </p>
                 <p>Title : <?=$parsedown->text($articles[$i]["title"])?></p>
                 <p>Body : <?=$parsedown->text($articles[$i]["body"])?></p>
             </div>
-        <?php }
+    <?php }
     ?>
 </body>
 </html>
